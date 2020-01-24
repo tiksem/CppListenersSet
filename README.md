@@ -82,10 +82,13 @@ listeners.execute(5, "some string");
 ## Removing listeners
 Listeners are stored by key for funcational objects, function pointers and lambdas. The key is returned by addListener method.
 Pointers to functional objects can be removed only by the pointer itself, so there is no assosiated key.
-### Removing functions and objects
+### Removing objects
 ```C++
 Handler handler;
 int key = onClickListeners.addListener(handler);
 onClickListeners.removeListener(key);
 ```
-
+### Removing pointers to objects
+Handler* handler = new Handler();
+onClickListeners.addListener(handler);
+onClickListeners.removeListener(handler);
