@@ -78,3 +78,13 @@ public:
 Handler* handler = new Handler();
 onClickListeners.addListener(handler);
 ```
+
+## Executing the listeners
+### Without arguments
+```C++
+listeners.execute();
+```
+### With arguments
+```C++
+listeners.execute(5, "some string");
+```
