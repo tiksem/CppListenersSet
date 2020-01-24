@@ -89,6 +89,8 @@ int key = onClickListeners.addListener(handler);
 onClickListeners.removeListener(key);
 ```
 ### Removing pointers to objects
+```C++
 Handler* handler = new Handler();
 onClickListeners.addListener(handler);
 onClickListeners.removeListener(handler);
+```
