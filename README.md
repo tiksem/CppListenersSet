@@ -170,3 +170,25 @@ C assert from assert.h is used bu default. You can define a custom assert by ove
 #define assert /*Custom assert override*/
 #include "ListenersSet.h"
 ```
+## Handling listeners lifetime
+C++ is manually memory management landguage. So sometimes it may happen, that the object is deleted from memory, but the listener assosiated with this object is still in the set. In this case you may face an undefined behaviour. To solve this issue you can manually delete a listener using removeListener method, but sometimes it's inconvinient. The library provides an ability to spesify a parent, while adding a listener. And when this parent is deleted the listener will be deleted as well. The parent should extend CppUtils::DestructorQueue or CppUtils::SynchronizedDestructorQueue. 
+```C++
+#include "ListenersSet.h"
+
+class Parent : public CppUtils::DestructorQueue {
+};
+
+int main(int argc, const char * argv[]) {
+    CppUtils::ListenersSet<> onClickListeners;
+    Parent* parent = new Parent();
+    onClickListeners.addListener([&] {
+        cout << "yo!";
+    }, parent);
+    // Outputs yo!
+    onClickListeners.executeAll();
+    // Outputs nothing!
+    delete parent;
+    onClickListeners.executeAll();
+    return 0;
+}
+```
