@@ -95,7 +95,7 @@ onClickListeners.addListener(handler);
 onClickListeners.removeListener(handler);
 ```
 
-### Single-shot lisetners
+## Single-shot lisetners
 Sometimes you want to execute the listener once and delete it after that
 ```C++
 #include "ListenersSet.h"
@@ -119,7 +119,7 @@ int main(int argc, const char * argv[]) {
 }
 ```
 
-### Listeners with action
+## Listeners with action
 Sometimes you want an advanced logic, where you decide to delete the listener or not after it's execution
 ```C++
 #include "ListenersSet.h"
