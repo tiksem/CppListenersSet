@@ -148,3 +148,17 @@ int main(int argc, const char * argv[]) {
 
 ## Multithreading and synchronization
 `ListenersSet` is not synchronized by default. So adding/deleting/executing the listeners should be done on the same thread. If you want a synchronization you should use a synchrnoized version `SynchronizedListenersSet`, it uses std::mutex for synchronization.
+### Specifying custom mutex
+If you want to pass your own mutex you can do it. The mutex should have lock/unlock methods
+```C++
+struct MyMutex {
+    inline void lock() {
+        // your code goes here
+    }
+    inline void unlock() {
+        // your code goes here
+    }
+};
+
+CppUtils::BaseListenersSet<MyMutex, Arg1,...,ArgN> listeners;
+```
