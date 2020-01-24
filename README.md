@@ -44,7 +44,7 @@ onClickListeners.addListener(std::function<void()>(handler))
 ```C++
 class Handler {
 public:
-    void operator()() const {
+    void operator()() {
         cout<<"yo!";
     }
 };
