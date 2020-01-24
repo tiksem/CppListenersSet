@@ -29,6 +29,7 @@ onClickListeners.addListener([] {
 ```
 
 ### Passing function pointer:
+To pass function pointer, you need to wrap it with std::function
 ```C++
 
 void handler() {
@@ -36,25 +37,14 @@ void handler() {
 }
 
 CppUtils::ListenersSet<> onClickListeners;
-onClickListeners.addListener(handler)
-```
-
-### Passing function pointer:
-```C++
-
-void handler() {
-    cout<<"Clicked";    
-}
-
-CppUtils::ListenersSet<> onClickListeners;
-onClickListeners.addListener(handler);
+onClickListeners.addListener(std::function<void()>(handler))
 ```
 
 ### Passing functional oject:
 ```C++
 class Handler {
 public:
-    void operator()() {
+    void operator()() const {
         cout<<"yo!";
     }
 };
@@ -70,7 +60,7 @@ Sometimes you want to pass an object as a listener, but you don't want to copy t
 ```C++
 class Handler {
 public:
-    void operator()() {
+    void operator()() const {
         cout<<"yo!";
     }
 };
@@ -88,3 +78,14 @@ listeners.execute();
 ```C++
 listeners.execute(5, "some string");
 ```
+
+## Removing listeners
+Listeners are stored by key for funcational objects, function pointers and lambdas. The key is returned by addListener method.
+Pointers to functional objects can be removed only by the pointer itself, so there is no assosiated key.
+### Removing functions and objects
+```C++
+Handler handler;
+int key = onClickListeners.addListener(handler);
+onClickListeners.removeListener(key);
+```
+
