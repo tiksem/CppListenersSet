@@ -94,3 +94,27 @@ Handler* handler = new Handler();
 onClickListeners.addListener(handler);
 onClickListeners.removeListener(handler);
 ```
+
+## Single-shot lisetners
+Sometimes you want to execute the listener once and delete it after that
+```C++
+#include "ListenersSet.h"
+
+class Handler {
+public:
+    void operator()() const {
+        cout<<"yo!";
+    }
+};
+
+int main(int argc, const char * argv[]) {
+    CppUtils::ListenersSet<> onClickListeners;
+    Handler handler;
+    onClickListeners.addOneShotListener(handler);
+    // Outputs yo!
+    onClickListeners.executeAll();
+    // Outputs nothing!
+    onClickListeners.executeAll();
+    return 0;
+}
+```
