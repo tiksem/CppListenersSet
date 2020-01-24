@@ -119,4 +119,31 @@ int main(int argc, const char * argv[]) {
 }
 ```
 
+### Listeners with action
+Sometimes you want an advanced logic, where you decide to delete the listener or not after it's execution
+```C++
+#include "ListenersSet.h"
+
+int main(int argc, const char * argv[]) {
+    CppUtils::ListenersSet<> onClickListeners;
+    int n = 2;
+    onClickListeners.addListenerWithAction([&] () -> CppUtils::ListenerAction {
+        cout << "yo!";
+        n--;
+        if (n != 0) {
+            return CppUtils::DONT_DELETE_LISTENER;
+        } else {
+            return CppUtils::DELETE_LISTENER;
+        }
+    });
+    // Outputs yo!
+    onClickListeners.executeAll();
+    // Outputs yo!
+    onClickListeners.executeAll();
+    // Outputs nothing
+    onClickListeners.executeAll();
+    return 0;
+}
+```
+
 
