@@ -163,4 +163,4 @@ struct MyMutex {
 CppUtils::BaseListenersSet<MyMutex, Arg1,...,ArgN> listeners;
 ```
 ## Debugging and assertations
-If NDEBUG macro is defined explicitly(usually every compilers adds NDEBUG macro for release mode), there are no any assertations. But if NDEBUG is not defined you get assertations when you use non-synchrnoized `ListenersSet` in different threads and in some other cases. To disable or enable assertations explicitly use `#define/#undef NDEBUG` before including "ListenersSet.h" header
+If NDEBUG macro is defined explicitly(usually every compiler adds NDEBUG macro for release mode), there are no any assertations. But if NDEBUG is not defined you get assertations when you use non-synchrnoized `ListenersSet` in different threads and in some other cases. To disable or enable assertations explicitly use `#define/#undef NDEBUG` before including "ListenersSet.h" header.
