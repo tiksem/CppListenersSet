@@ -44,7 +44,7 @@ onClickListeners.addListener(std::function<void()>(handler))
 ```C++
 class Handler {
 public:
-    void operator()() {
+    void operator()() const {
         cout<<"yo!";
     }
 };
@@ -60,7 +60,7 @@ Sometimes you want to pass an object as a listener, but you don't want to copy t
 ```C++
 class Handler {
 public:
-    void operator()() const {
+    void operator()() {
         cout<<"yo!";
     }
 };
