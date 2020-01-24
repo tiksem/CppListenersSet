@@ -165,7 +165,7 @@ CppUtils::BaseListenersSet<MyMutex, Arg1,...,ArgN> listeners;
 ## Debugging and assertations
 If NDEBUG macro is defined explicitly(usually every compiler adds NDEBUG macro for release mode), there are no any assertations. But if NDEBUG is not defined you get assertations when you use non-synchrnoized `ListenersSet` in different threads and in some other cases. To disable or enable assertations explicitly use `#define/#undef NDEBUG` before including "ListenersSet.h" header.
 ### Sepcifying custom assert
-C assert from assert.h i used bu default. You can define a custom assert by overriding assert macro using #define
+C assert from assert.h is used bu default. You can define a custom assert by overriding assert macro using #define
 ```C++
 #define assert /*Custom assert override*/
 #include "ListenersSet.h"
