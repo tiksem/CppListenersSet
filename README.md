@@ -17,7 +17,7 @@ CppUtils::ListenersSet<> onClickListeners;
 CppUtils::ListenersSet<int, std::string> onNewListItemAdded;
 ```
 
-## Adding funcations and functional objects as listeners
+## Adding functions and functional objects as listeners
 You can pass any std::function compatible object/function to addListener method
 
 ### Passing lambda:
