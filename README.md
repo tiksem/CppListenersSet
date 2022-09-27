@@ -96,7 +96,7 @@ onClickListeners.removeListener(handler);
 ```
 
 ## Single-shot lisetners
-Sometimes you want to execute the listener once and delete it after that
+Sometimes you want to execute a listener once and delete it after that
 ```C++
 #include "ListenersSet.h"
 
