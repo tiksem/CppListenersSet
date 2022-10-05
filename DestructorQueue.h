@@ -16,11 +16,11 @@ namespace CppUtils {
 
     template <typename Mutex>
     class BaseDestructorQueue : public AbstractDestructorQueue {
-        BaseCallbacksQueue<DummyMutex>* destructorCallbackQueue = nullptr;
+        BaseCallbacksQueue<Mutex>* destructorCallbackQueue = nullptr;
     public:
         void executeOnDestructor(const std::function<void()>& func) override {
             if (!destructorCallbackQueue) {
-                destructorCallbackQueue = new CallbacksQueue();
+                destructorCallbackQueue = new BaseCallbacksQueue<Mutex>();
             }
 
             destructorCallbackQueue->post(func);
